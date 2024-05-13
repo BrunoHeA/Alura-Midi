@@ -1,9 +1,16 @@
-// FUNÇÕES
+const listaTeclas = document.querySelectorAll('.tecla');
 
-function tocaSomPom() {
-    document.querySelector('#som_tecla_pom').play();
+function tocaSom(idAudio) {
+    document.querySelector(idAudio).play();
 }
 
-const listaTeclas = document.querySelectorAll('.tecla')
+for(let contador = 0; contador < listaTeclas.length; contador++) {
 
-listaTeclas[0].onclick = tocaSomPom;
+    const tecla = listaTeclas[contador];
+    const instrumento = tecla.classList[1];
+    const idAudio = `#som_${instrumento}`;
+    tecla.onclick = function() {
+        tocaSom(idAudio);
+    }
+
+}
